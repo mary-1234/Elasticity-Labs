@@ -122,3 +122,93 @@ Alternatively, you can register instances with your load balancer later on using
 5. Choose Actions, Delete.  
   
 6. After you delete a load balancer, the EC2 instances associated with the load balancer should also be terminated as well. 
+
+  
+  
+  ## B. Labs on Amazon CloudWatch
+  
+  <P> In this lab,you will Create alarms that stop, terminate, reboot, or recover an instance
+     So you can create a CloudWatch alarm that monitors CloudWatch metrics for one of your instances. CloudWatch will automatically send you a notification when the metric reaches a threshold you specify. You can create a CloudWatch alarm using the Amazon EC2 console, or using the more advanced options provided by the CloudWatch console.
+    
+    To create an alarm using the Amazon EC2 console
+
+1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+2. In the navigation pane, choose Instances.
+
+3. Select the instance and choose Actions, Monitor and troubleshoot, Manage CloudWatch alarms.
+
+4. On the Manage CloudWatch alarms detail page, under Add or edit alarm, select Create an alarm.
+
+5. For Alarm notification, choose whether to turn the toggle on or off to configure Amazon Simple Notification Service (Amazon SNS) notifications. Enter an existing Amazon SNS topic or enter a name to create a new topic.
+
+6. For Alarm action, choose whether to turn the toggle on or off to specify an action to take when the alarm is triggered. Select an action from the dropdown.
+
+7. For Alarm thresholds, select the metric and criteria for the alarm. For example, you can leave the default settings for Group samples by (Average) and Type of data to sample (CPU utilization). For Alarm when, choose >= and enter 0.80. For Consecutive period, enter 1. For Period, select 5 minutes.
+
+8. (Optional) For Sample metric data, choose Add to dashboard.
+
+9. Choose Create.
+    
+    
+    ## C. Labs on Amazon Autoscaling Groups
+    
+<P>    Description
+Auto Scaling helps you maintain application availability and allows you to scale your Amazon EC2 capacity up or down automatically according to the defined conditions. You can use Auto Scaling to help ensure that you are running your desired number of Amazon EC2 instances. Auto Scaling can also automatically increase the number of Amazon EC2 instances during demand spikes to maintain performance and decrease capacity during lulls to reduce costs. Auto Scaling is well suited to applications that have stable demand patterns, or that experience hourly, daily, or weekly variability in usage.
+
+    
+ ### Step 1: Create a launch template
+  
+  <P> Choose a region that best suits your business needs
+    
+1.  Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+2. On the navigation pane, under Instances, choose Instances.
+
+2. Select the instance and choose Actions, Image and templates, Create template from instance.
+
+3. Provide a name and description.
+
+4. Under Auto Scaling guidance, select the check box.
+
+5. Adjust any settings as required, and choose Create launch template.
+    
+
+### Step 2: Create an Auto Scaling Group using a Launch template 
+    
+<p> 1. Open the Amazon EC2 Auto Scaling console at https://console.aws.amazon.com/ec2autoscaling/.
+
+2. On the navigation bar at the top of the screen, choose the same AWS Region that you used when you created the launch template.
+
+3. Choose Create an Auto Scaling group.
+
+4. On the Choose launch template or configuration page, do the following:
+
+      a. For Auto Scaling group name, enter a name for your Auto Scaling group.
+
+      b. For Launch template, choose an existing launch template.
+
+      c. For Launch template version, choose whether the Auto Scaling group uses the default, the latest, or a specific version of the launch template when scaling out.
+
+      d. Verify that your launch template supports all of the options that you are planning to use, and then choose Next.
+
+5. On the Choose instance launch options page, under Network, for VPC, choose a VPC. The Auto Scaling group must be created in the same VPC as the security group you specified in your launch template.
+
+6. For Availability Zones and subnets, choose one or more subnets in the specified VPC. Use subnets in multiple Availability Zones for high availability. For more information, see Considerations when choosing VPC subnets.
+  
+7. If you created a launch template with an instance type specified, then you can continue to the next step to create an Auto Scaling group that uses the instance type in the launch template.
+
+Alternatively, you can choose the Override launch template option if no instance type is specified in your launch template or if you want to use multiple instance types for auto scaling. For more information, see Auto Scaling groups with multiple instance types and purchase options.
+
+8. Choose Next to continue to the next step.
+
+Or, you can accept the rest of the defaults, and choose Skip to review.
+  
+9. On the Review page, choose Create Auto Scaling group.
+
+
+ 
+    
+    
+  
+  
